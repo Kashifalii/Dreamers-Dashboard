@@ -1,9 +1,9 @@
-import { PageLayout } from '../../components/layout/PageLayout';
-import { DataTable } from '../../components/dashboard/DataTable';
-import { Badge } from '../../components/ui/badge';
-import { Button } from '../../components/ui/button';
-import { Eye, Edit, BarChart3 } from 'lucide-react';
-import { mockCourses } from '../../data/mockData';
+import { PageLayout } from "../../components/layout/PageLayout";
+import { DataTable } from "../../components/dashboard/DataTable";
+import { Badge } from "../../components/ui/badge";
+import { Button } from "../../components/ui/button";
+import { Eye, Edit, BarChart3 } from "lucide-react";
+import { mockCourses } from "../../data/mockData";
 
 export function AdminCourses() {
   return (
@@ -26,18 +26,20 @@ export function AdminCourses() {
         exportable
         columns={[
           {
-            header: 'Course Name',
-            accessor: 'name',
+            header: "Course Name",
+            accessor: "name",
             cell: (value, row) => (
               <div>
                 <p className="text-sm mb-1">{value}</p>
-                <p className="text-xs text-muted-foreground">{row.description}</p>
+                <p className="text-xs text-muted-foreground">
+                  {row.description}
+                </p>
               </div>
             ),
           },
           {
-            header: 'Category',
-            accessor: 'category',
+            header: "Category",
+            accessor: "category",
             cell: (value) => (
               <Badge variant="secondary" className="bg-secondary">
                 {value}
@@ -45,16 +47,16 @@ export function AdminCourses() {
             ),
           },
           {
-            header: 'Instructor',
-            accessor: 'instructor',
+            header: "Instructor",
+            accessor: "instructor",
           },
           {
-            header: 'Duration',
-            accessor: 'duration',
+            header: "Duration",
+            accessor: "duration",
           },
           {
-            header: 'Enrollments',
-            accessor: 'enrollmentCount',
+            header: "Enrollments",
+            accessor: "enrollmentCount",
             cell: (value) => (
               <div className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-accent" />
@@ -63,20 +65,24 @@ export function AdminCourses() {
             ),
           },
           {
-            header: 'Status',
-            accessor: 'status',
+            header: "Status",
+            accessor: "status",
             cell: (value) => (
               <Badge
-                variant={value === 'active' ? 'default' : 'secondary'}
-                className={value === 'active' ? 'bg-green-500/20 text-green-500' : 'bg-muted'}
+                variant={value === "active" ? "default" : "secondary"}
+                className={
+                  value === "active"
+                    ? "bg-green-500/20 text-green-500"
+                    : "bg-muted"
+                }
               >
                 {value}
               </Badge>
             ),
           },
           {
-            header: 'Actions',
-            accessor: (row) => row,
+            header: "Actions",
+            accessor: "name",
             cell: () => (
               <div className="flex items-center gap-2">
                 <Button variant="ghost" size="sm" className="h-8 px-2">

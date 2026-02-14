@@ -1,10 +1,10 @@
-import { PageLayout } from '../../components/layout/PageLayout';
-import { DataTable } from '../../components/dashboard/DataTable';
-import { Badge } from '../../components/ui/badge';
-import { Button } from '../../components/ui/button';
-import { Progress } from '../../components/ui/progress';
-import { Eye, Mail } from 'lucide-react';
-import { mockStudents } from '../../data/mockData';
+import { PageLayout } from "../../components/layout/PageLayout";
+import { DataTable } from "../../components/dashboard/DataTable";
+import { Badge } from "../../components/ui/badge";
+import { Button } from "../../components/ui/button";
+import { Progress } from "../../components/ui/progress";
+import { Eye, Mail } from "lucide-react";
+import { mockStudents } from "../../data/mockData";
 
 export function AdminStudents() {
   return (
@@ -21,8 +21,8 @@ export function AdminStudents() {
         exportable
         columns={[
           {
-            header: 'Student Name',
-            accessor: 'name',
+            header: "Student Name",
+            accessor: "name",
             cell: (value, row) => (
               <div>
                 <p className="text-sm">{value}</p>
@@ -31,44 +31,50 @@ export function AdminStudents() {
             ),
           },
           {
-            header: 'Enrolled Courses',
-            accessor: 'enrolledCourses',
+            header: "Enrolled Courses",
+            accessor: "enrolledCourses",
           },
           {
-            header: 'Completed Courses',
-            accessor: 'completedCourses',
+            header: "Completed Courses",
+            accessor: "completedCourses",
           },
           {
-            header: 'Overall Progress',
-            accessor: 'progress',
+            header: "Overall Progress",
+            accessor: "progress",
             cell: (value) => (
               <div className="w-32">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs text-muted-foreground">{value}%</span>
+                  <span className="text-xs text-muted-foreground">
+                    {value}%
+                  </span>
                 </div>
                 <Progress value={value} className="h-2" />
               </div>
             ),
           },
           {
-            header: 'Status',
-            accessor: 'status',
+            header: "Status",
+            accessor: "status",
             cell: (value) => (
               <Badge
-                variant={value === 'active' ? 'default' : 'secondary'}
-                className={value === 'active' ? 'bg-green-500/20 text-green-500' : 'bg-muted'}
+                variant={value === "active" ? "default" : "secondary"}
+                className={
+                  value === "active"
+                    ? "bg-green-500/20 text-green-500"
+                    : "bg-muted"
+                }
               >
                 {value}
               </Badge>
             ),
           },
           {
-            header: 'Joined Date',
-            accessor: 'joinedDate',
+            header: "Joined Date",
+            accessor: "joinedDate",
           },
           {
-            header: 'Actions',
-            accessor: (row) => row,
+            header: "Actions",
+            accessor: () => null,
             cell: () => (
               <div className="flex items-center gap-2">
                 <Button variant="ghost" size="sm" className="h-8 px-2">

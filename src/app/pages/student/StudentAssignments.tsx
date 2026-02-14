@@ -1,15 +1,21 @@
-import { PageLayout } from '../../components/layout/PageLayout';
-import { DataTable } from '../../components/dashboard/DataTable';
-import { Card } from '../../components/ui/card';
-import { Badge } from '../../components/ui/badge';
-import { Button } from '../../components/ui/button';
-import { Upload, Eye, Clock, CheckCircle2, AlertCircle } from 'lucide-react';
-import { mockAssignments } from '../../data/mockData';
+import { PageLayout } from "../../components/layout/PageLayout";
+import { DataTable } from "../../components/dashboard/DataTable";
+import { Card } from "../../components/ui/card";
+import { Badge } from "../../components/ui/badge";
+import { Button } from "../../components/ui/button";
+import { Upload, Eye, Clock, CheckCircle2, AlertCircle } from "lucide-react";
+import { mockAssignments } from "../../data/mockData";
 
 export function StudentAssignments() {
-  const pendingAssignments = mockAssignments.filter(a => a.status === 'pending');
-  const submittedAssignments = mockAssignments.filter(a => a.status === 'submitted');
-  const gradedAssignments = mockAssignments.filter(a => a.status === 'graded');
+  const pendingAssignments = mockAssignments.filter(
+    (a) => a.status === "pending",
+  );
+  const submittedAssignments = mockAssignments.filter(
+    (a) => a.status === "submitted",
+  );
+  const gradedAssignments = mockAssignments.filter(
+    (a) => a.status === "graded",
+  );
 
   return (
     <PageLayout
@@ -64,7 +70,9 @@ export function StudentAssignments() {
             <div className="flex-1">
               <h3 className="text-base mb-1">Assignments Due Soon</h3>
               <p className="text-sm text-muted-foreground">
-                You have {pendingAssignments.length} pending assignment{pendingAssignments.length > 1 ? 's' : ''} that need your attention.
+                You have {pendingAssignments.length} pending assignment
+                {pendingAssignments.length > 1 ? "s" : ""} that need your
+                attention.
               </p>
             </div>
           </div>
@@ -79,40 +87,47 @@ export function StudentAssignments() {
         filterable
         columns={[
           {
-            header: 'Assignment',
-            accessor: 'title',
+            header: "Assignment",
+            accessor: "title",
             cell: (value, row) => (
               <div>
                 <p className="text-sm mb-1">{value}</p>
-                <p className="text-xs text-muted-foreground">{row.courseName}</p>
+                <p className="text-xs text-muted-foreground">
+                  {row.courseName}
+                </p>
               </div>
             ),
           },
           {
-            header: 'Due Date',
-            accessor: 'dueDate',
+            header: "Due Date",
+            accessor: "dueDate",
             cell: (value, row) => {
-              const isOverdue = new Date(value) < new Date() && row.status === 'pending';
+              const isOverdue =
+                new Date(value) < new Date() && row.status === "pending";
               return (
                 <div className="flex items-center gap-2">
-                  {isOverdue && <AlertCircle className="w-4 h-4 text-red-500" />}
-                  <span className={isOverdue ? 'text-red-500' : ''}>{value}</span>
+                  {isOverdue && (
+                    <AlertCircle className="w-4 h-4 text-red-500" />
+                  )}
+                  <span className={isOverdue ? "text-red-500" : ""}>
+                    {value}
+                  </span>
                 </div>
               );
             },
           },
           {
-            header: 'Status',
-            accessor: 'status',
+            header: "Status",
+            accessor: "status",
             cell: (value) => (
               <Badge
                 variant="secondary"
                 className={
-                  value === 'pending'
-                    ? 'bg-yellow-500/20 text-yellow-500'
-                    : value === 'submitted'
-                    ? 'bg-blue-500/20 text-blue-500'
-                    : 'bg-green-500/20 text-green-500'
+                  value === "pending"
+                    ? "bg-yellow-500/20 text-yellow-500"
+                    : value === "submitted"
+                      ? "bg-blue-500/20 text-blue-500"
+                      : "bg-green-500/20 text-green-500"
                 }
               >
                 {value}
@@ -120,20 +135,25 @@ export function StudentAssignments() {
             ),
           },
           {
-            header: 'Grade',
-            accessor: 'grade',
-            cell: (value) => (value ? <span className="text-accent">{value}%</span> : <span className="text-muted-foreground">-</span>),
+            header: "Grade",
+            accessor: "grade",
+            cell: (value) =>
+              value ? (
+                <span className="text-accent">{value}%</span>
+              ) : (
+                <span className="text-muted-foreground">-</span>
+              ),
           },
           {
-            header: 'Actions',
-            accessor: (row) => row,
+            header: "Actions",
+            accessor: "id",
             cell: (_, row) => (
               <div className="flex gap-2">
                 <Button variant="outline" size="sm">
                   <Eye className="w-3 h-3 mr-1" />
                   View
                 </Button>
-                {row.status === 'pending' && (
+                {row.status === "pending" && (
                   <Button size="sm" className="bg-accent hover:bg-accent/90">
                     <Upload className="w-3 h-3 mr-1" />
                     Submit
@@ -150,7 +170,9 @@ export function StudentAssignments() {
         <div className="flex items-start justify-between mb-4">
           <div>
             <h3 className="text-lg mb-2">Build a Todo App with Hooks</h3>
-            <p className="text-sm text-muted-foreground">Advanced React Development</p>
+            <p className="text-sm text-muted-foreground">
+              Advanced React Development
+            </p>
           </div>
           <Badge className="bg-yellow-500/20 text-yellow-500">Pending</Badge>
         </div>
@@ -158,9 +180,10 @@ export function StudentAssignments() {
         <div className="mb-6 p-4 bg-secondary rounded-lg">
           <h4 className="text-sm mb-2">Assignment Description</h4>
           <p className="text-sm text-muted-foreground">
-            Create a fully functional todo application using React hooks (useState, useEffect, useReducer).
-            The app should support adding, editing, deleting, and marking todos as complete.
-            Include local storage persistence and proper error handling.
+            Create a fully functional todo application using React hooks
+            (useState, useEffect, useReducer). The app should support adding,
+            editing, deleting, and marking todos as complete. Include local
+            storage persistence and proper error handling.
           </p>
         </div>
 
@@ -174,7 +197,9 @@ export function StudentAssignments() {
             <p className="text-sm">100</p>
           </div>
           <div className="p-4 bg-secondary rounded-lg">
-            <p className="text-xs text-muted-foreground mb-1">Submission Type</p>
+            <p className="text-xs text-muted-foreground mb-1">
+              Submission Type
+            </p>
             <p className="text-sm">Code + Documentation</p>
           </div>
         </div>
